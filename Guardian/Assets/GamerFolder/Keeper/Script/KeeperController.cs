@@ -50,7 +50,7 @@ public class KeeperController : MonoBehaviour
             {
                 goRight = false;
             }
-                transform.position = Vector2.MoveTowards(transform.position, b.position, 0.2f * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, b.position, 2.2f * Time.deltaTime);
 
         }
         else
@@ -62,7 +62,7 @@ public class KeeperController : MonoBehaviour
                 goRight = true;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, a.position, 0.2f * Time.deltaTime); 
+            transform.position = Vector2.MoveTowards(transform.position, a.position, 2.2f * Time.deltaTime); 
 
         }
     }

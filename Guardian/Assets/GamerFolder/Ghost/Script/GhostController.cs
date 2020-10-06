@@ -31,7 +31,7 @@ public class GhostController : MonoBehaviour
             {
                 transform.position = a.position;
             }
-            transform.position = Vector2.MoveTowards(transform.position, b.position, 0.8f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, b.position, 13f * Time.deltaTime);
 
         }
         else
@@ -43,7 +43,7 @@ public class GhostController : MonoBehaviour
                 transform.position = b.position;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, a.position, 0.8f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, a.position, 13f * Time.deltaTime);
 
         }
 
@@ -54,7 +54,7 @@ public class GhostController : MonoBehaviour
         if (collision.CompareTag("Player")) 
         {
 
-            collision.GetComponent<Character>().life--;
+            collision.GetComponent<Character>().PlayerDamage(1);
         
         }
     }

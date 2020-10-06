@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
         if(GetComponent<Character>().life <= 0)
         {
-
+            rb.simulated = false;
             this.enabled = false;
         
         }
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             dashTime = 0;
             skin.GetComponent<Animator>().Play("PlayerDash", -1);
             rb.velocity = Vector2.zero;
-            rb.AddForce(new Vector2(skin.localScale.x * 150,0));
+            rb.AddForce(new Vector2(skin.localScale.x * 680,0));//adiciona força no dash
         }
 
 
@@ -69,13 +69,13 @@ public class PlayerController : MonoBehaviour
             skin.GetComponent<Animator>().Play("PlayerJump",-1);
             rb.velocity = Vector2.zero;
             flooCollider.GetComponent<FloorCollider>().canJump = false;
-            rb.AddForce(new Vector2(0, 150));
+            rb.AddForce(new Vector2(0, 960));//adiciona força no pulo.
         
         
         
         }
 
-        vel = new Vector2(Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+        vel = new Vector2(Input.GetAxisRaw("Horizontal")*8.5f, rb.velocity.y);//controla a velocidade do player
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (dashTime > 1)
+        if (dashTime > 0.5)
         {
             rb.velocity = vel;
         }

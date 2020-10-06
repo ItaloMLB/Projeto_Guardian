@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Character : MonoBehaviour
 {
 
     public int life;
     public Transform skin;
+    public Transform cam;
+   
 
 
 
@@ -19,14 +22,24 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(life <=0) 
+      
+        if (life <=0) 
         
         { 
 
         skin.GetComponent<Animator>().Play("Die", -1);
 
         }
+     
 
 
+    }
+    public void PlayerDamage(int value) 
+    {
+
+       life = life - value;
+        skin.GetComponent<Animator>().Play("PlayerDamage", 1);
+        cam.GetComponent<Animator>().Play("MainCamera", -1);
+    
     }
 }

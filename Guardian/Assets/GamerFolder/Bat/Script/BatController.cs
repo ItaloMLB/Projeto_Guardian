@@ -22,23 +22,24 @@ public class BatController : MonoBehaviour
         {
 
             GetComponent<CircleCollider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().gravityScale = 8f;
             this.enabled = false;
 
         }
 
-        if (Vector2.Distance(transform.position, player.position) > 0.2f)
+        if (Vector2.Distance(transform.position, player.GetComponent<CapsuleCollider2D>().bounds.center) > 0.9f)
         {
             attackTime = 0;
-            transform.position = Vector2.MoveTowards(transform.position, player.position, 0.5f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.GetComponent<CapsuleCollider2D>().bounds.center, 2f * Time.deltaTime);
         }
         else {
 
             attackTime = attackTime + Time.deltaTime;
-            if (attackTime >= 1) 
+            if (attackTime >= 0.6f) 
             {
                 attackTime = 0;
-                player.GetComponent<Character>().life--;
+                player.GetComponent<Character>().PlayerDamage(1);
+            
             
             
             }
