@@ -12,6 +12,9 @@ public class KeeperController : MonoBehaviour
     public Transform skin;
     public Transform keeperRange;
 
+    public AudioSource audioSource;
+    public AudioClip dieSound;
+
 
 
     // Start is called before the first frame update
@@ -26,6 +29,9 @@ public class KeeperController : MonoBehaviour
         if (GetComponent<Character>().life <= 0)
         {
 
+
+
+            audioSource.PlayOneShot(dieSound,0.5f);
             keeperRange.GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
 

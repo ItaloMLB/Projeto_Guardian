@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class FloorCollider : MonoBehaviour
+public class triggerLevel2Level3 : MonoBehaviour
 {
-    public bool canJump;
-
-    public AudioSource audioSource;
-    public AudioClip groundedSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +18,11 @@ public class FloorCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Floor")) {
+        if (collision.CompareTag("Player"))
+        {
 
+            SceneManager.LoadScene("Level3");
 
-            canJump = true;
-            audioSource.PlayOneShot(groundedSound,0.5f);
 
         }
     }
