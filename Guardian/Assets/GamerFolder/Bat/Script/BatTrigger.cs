@@ -28,6 +28,7 @@ public class BatTrigger : MonoBehaviour
             {
 
                 obj.GetComponent<BatController>().enabled = true;
+                obj.GetComponent<BatController>().player = collision.transform;
             
             
             

@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashSound;
 
     public Transform flooCollider;
-   public Transform skin;
-   public int comboNum;
-   public float comboTime;
-   public float dashTime;
+    public Transform skin;
+    public Transform gameOverScreen;
+    public Transform pauseScreen;
+    public int comboNum;
+    public float comboTime;
+    public float dashTime;
     public string currentLevel;
 
     // Start is called before the first frame update
@@ -44,10 +46,20 @@ public class PlayerController : MonoBehaviour
 
         if(GetComponent<Character>().life <= 0)
         {
+            gameOverScreen.GetComponent<GameOver>().enabled = true;
             rb.simulated = false;
             this.enabled = false;
         
         }
+
+        if (Input.GetButtonDown("Cancel")) 
+        {
+
+            pauseScreen.GetComponent<Pause>().enabled = !pauseScreen.GetComponent<Pause>().enabled;
+        
+        }
+
+
         //Dash do Player
         dashTime = dashTime + Time.deltaTime;
         if(Input.GetButtonDown("Fire2")&& dashTime > 1)
@@ -133,6 +145,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = vel;
         }
+    }
+
+    public void DestroyPlayer() 
+    {
+        Destroy(transform.gameObject);
+    
     }
 }
 
