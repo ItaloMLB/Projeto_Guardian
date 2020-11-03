@@ -72,7 +72,9 @@ public class PlayerController : MonoBehaviour
             dashTime = 0;
             skin.GetComponent<Animator>().Play("PlayerDash", -1);
             rb.velocity = Vector2.zero;
-            rb.AddForce(new Vector2(skin.localScale.x * 680,0));//adiciona força no dash
+            rb.gravityScale = 0;
+            rb.AddForce(new Vector2(skin.localScale.x * 800,0));//adiciona força no dash
+            Invoke("RestoreGravityScale", 0.3f);
         }
 
         //Combo do Player
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
             skin.GetComponent<Animator>().Play("PlayerJump",-1);
             rb.velocity = Vector2.zero;
             flooCollider.GetComponent<FloorCollider>().canJump = false;
-            rb.AddForce(new Vector2(0, 960));//adiciona força no pulo.
+            rb.AddForce(new Vector2(0, 965));//adiciona força no pulo.
         
         
         
@@ -141,7 +143,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (dashTime > 0.5)
+        if (dashTime > 0.3)
         {
             rb.velocity = vel;
         }
@@ -150,6 +152,13 @@ public class PlayerController : MonoBehaviour
     public void DestroyPlayer() 
     {
         Destroy(transform.gameObject);
+    
+    }
+
+    void RestoreGravityScale()
+    {
+
+        rb.gravityScale = 6;
     
     }
 }
