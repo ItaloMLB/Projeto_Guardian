@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spike : MonoBehaviour
 {
     Transform boss;
+    public AudioClip sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +28,23 @@ public class Spike : MonoBehaviour
 
         }
     }
+
+    public void CollisionSound() 
+    {
+
+        GetComponent<AudioSource>().PlayOneShot(sound);
+    
+    }
+
     public void ReleaseBoss()
     {
-        boss.GetComponent<BossController>().enabled = true;
+        if (boss != null) 
+        {
+            boss.GetComponent<BossController>().enabled = true;
 
-        boss.parent = null;
+            boss.parent = null;
+
+        }
     
     }
 }

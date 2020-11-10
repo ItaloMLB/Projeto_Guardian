@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AddCoração : MonoBehaviour
+
 {
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +23,10 @@ public class AddCoração : MonoBehaviour
     {
         if (collision.CompareTag("Player")) 
         {
-
+           
             collision.GetComponent<Character>().life++;
             Destroy(transform.gameObject);
+           
         
         }
     }

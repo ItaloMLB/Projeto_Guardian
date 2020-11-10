@@ -6,6 +6,7 @@ public class Pole : MonoBehaviour
 {
 
     public Transform spiker;
+    public AudioClip sound;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class Pole : MonoBehaviour
         {
             spiker.GetComponent<Animator>().Play("Spike",-1);
             GetComponent<Animator>().Play("Pole", -1);
-        
+            GetComponent<AudioSource>().PlayOneShot(sound);
         }
     }
 }
