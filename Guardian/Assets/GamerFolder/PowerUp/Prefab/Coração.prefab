@@ -61,7 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae2e60f3a8dfd4b99280cf032dd329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
+  "efeitoCora\xE7\xE3o": {fileID: 8783314977736756055, guid: 439ebfc0fe6cbe847affbb2d0bcd0281,
+    type: 3}
 --- !u!1 &5752722321009450545
 GameObject:
   m_ObjectHideFlags: 0
